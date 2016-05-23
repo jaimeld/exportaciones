@@ -4,7 +4,7 @@
 <li class='has-sub'><a href='#'>Exportaciones</a>
 	<ul> 
 	<li ><a href='exportaciones_add.php'>Agregar</a></li>
-	<li ><a href='exportaciones_upd.php'>Actualizar</a></li>
+	<li ><a href='cambiarClave.php'>cambiar clave</a></li>
 	<li ><a href='exportaciones_del.php'>Eliminar</a></li>
 	</ul>
 </li>

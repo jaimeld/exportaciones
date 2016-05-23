@@ -18,7 +18,7 @@ and open the template in the editor.
     <script src="js/md5/md5.js"></script>
     <body>
 
-        <?php require 'ValidaSesion.php';?>
+        <?php require 'Valida_acceso.php';?>
 
 <?php
 
