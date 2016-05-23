@@ -13,13 +13,16 @@ and open the template in the editor.
     <script src="js/md5/md5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <body>
-        <form id="acceso" action="index.php" method="post">
+        <form id="acceso"  method="post">
         <fieldset>
-        <legend>Personal information:</legend>
-        Usuario:<br>
-        <input type="text" name="usuario" id="usuario"><br>
-        Clave:<br>
-            <input type="text" name="clave" id="clave"><br>
+        <legend>Ingresar Producto:</legend>
+        nombre:<br>
+        <input type="text" name="nombreproducto" id="nombreProducto"><br>
+        Total USD:<br>
+            <input type="text" name="totalUSD" id="totalUSD"><br>
+            <br>
+         Anio:<br>
+            <input type="text" name="anio" id="anio"><br>
             <br>
             <div id="mensaje"></div>
             <input type="button" name="enviar" value ="Enviar" onclick="Validar()">
@@ -30,20 +33,20 @@ and open the template in the editor.
     </body>
     <script> 
         function Validar(){
-        var clave;
-        var dato=$("#clave").val();
-        clave=CryptoJS.MD5(dato).toString();
+
         
         
           $.ajax({
-                    url:'ValidaAcceso.php',
+                    url:'accProductoAgregar.php',
                     type:'POST',
-                    data:"usuario="+$("#usuario").val()+"&clave="+clave,
+                    data:"nombreProducto="+$("#nombreProducto").val()
+                        +"totalUSD="+$("#totalUSD").val()
+                        +"anio="+$("#anio").val(),
                     success:function(datos){
                       if (datos=='true') 
-                          $("#acceso").submit();
+                          $("#mensaje").html("ingresado correctamente");
                       else
-                           $("#mensaje").html("Usuario o clave erroneo");
+                           $("#mensaje").html("error al ingresar");
                     }
                 });
         
