@@ -63,25 +63,25 @@ class Usuario{
 
 
 	}
-	function ActualizaClave($snewpwd){
-		$db=dbconnect();
-		/*Definici�n del query que permitira actualizar la clave*/
-		$sqlupd="update acceso
-					set pwdusuario=:pwd
-					where idacceso=:id";
-	
-		/*Preparaci�n SQL*/
-		$querysel=$db->prepare($sqlupd);
-	
-		/*Asignaci�n de parametros utilizando bindparam*/
-		$querysel->bindParam(':pwd',md5($snewpwd));
-		$querysel->bindParam(':id',$this->nidacceso);
-		
-
-		$valaux=$querysel->execute();
-	
-		return $valaux;
-	}
+	    public function ModificaClave($nuevaClave){
+        /*Llamado a la función que crea la instancia del objeto PDO*/
+        
+        $db= dbconnect();
+        
+        /*Declaración de la sentencia SQL que se requiere ejecutar*/
+        $squery="update usuarios set clave=:pwd where usuario=:usr";
+        
+        /*Instancia del objeto que realizará el query*/
+        $queryseleccion=$db->prepare($squery);
+        
+        $queryseleccion->bindParam(":usr",$this->nomusuario);
+        $queryseleccion->bindParam(":pwd",$nuevaClave);
+        
+        $resultado=$queryseleccion->execute();
+        
+        return $resultado;
+        
+    }
 
 }
 ?>

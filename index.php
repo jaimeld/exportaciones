@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include ('librerias.php');
 session_start();
 ?>
